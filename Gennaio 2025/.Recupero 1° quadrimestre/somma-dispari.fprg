@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="4.2">
+    <attributes>
+        <attribute name="name" value="somma-dispari"/>
+        <attribute name="authors" value="Davide"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2025-01-21 08:11:56 "/>
+        <attribute name="created" value="RGF2aWRlO0RFU0tUT1AtRlUwQzA7MjAyNS0wMS0yMTsiMDc6MTc6MjkgIjsyNjg0"/>
+        <attribute name="edited" value="RGF2aWRlO0RFU0tUT1AtRlUwQzA7MjAyNS0wMS0yMTsiMDg6MTE6NTYgIjs1OzI3OTE="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="num, count, sum, step" type="Integer" array="False" size=""/>
+            <assign variable="sum" expression="0"/>
+            <assign variable="step" expression="1"/>
+            <output expression="&quot;Inserire un numero&quot;" newline="True"/>
+            <input variable="num"/>
+            <while expression="num &lt; 0">
+                <output expression="&quot;Inserire un numero maggiore di 0&quot;" newline="True"/>
+                <input variable="num"/>
+            </while>
+            <assign variable="count" expression="num"/>
+            <while expression="count != 0">
+                <assign variable="sum" expression="sum + step"/>
+                <assign variable="step" expression="step + 2"/>
+                <assign variable="count" expression="count - 1"/>
+            </while>
+            <output expression="sum" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>
