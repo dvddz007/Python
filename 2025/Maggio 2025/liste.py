@@ -10,6 +10,7 @@ numeri = [3, 7, 2, 9, 5, 9]
 numeri = [3, 7, 2, 9, 5, 9]
 
 massimo = numeri[0]
+maxindex = 0
 for i in range(len(numeri)):
     if massimo < numeri[i]:
         massimo = numeri[i]
