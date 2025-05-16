@@ -76,6 +76,7 @@ lista = [1, 2, 3, 4, 2, 5, 6]
 # Risultato atteso: [1, 5, 6]  # tutto da 2 a 2 incluso viene rimosso
 '''
 
+'''
 lista = [1, 2, 3, 4, 2, 5, 6]
 
 start = 0
@@ -95,3 +96,4 @@ for i in range(len(lista)):
         break
 
 print(lista)
+'''
