@@ -4,9 +4,9 @@ import string
 
 def primo(numero: int) -> bool:
     """
-    Prende un intero e restituisce un booleano.
+        Prende un intero e restituisce un booleano.
     """
-    if numero == 0 or numero == 1:
+    if numero <= 1:
         return False
     if numero == 2 or numero == 3:
         return True
@@ -26,7 +26,7 @@ print(f"Il file {file} esiste.")
 with open(file, "r") as fi:
     text = fi.read()
 
-print(f"Testo non formattato: \n {text}")
+print(f"Testo non formattato: \n{text}")
 print()
 #       translate traduce una stringa seguendo una tabella di traduzione.
 #       maketrans(char_da_sostituire, char_sostituitivi, char da rimuovere) e ne crea una tabella di traduzione.
