@@ -6,23 +6,24 @@ listaDiListe = []
 
 minimo = 101
 massimo = -1
-for j in range(RIGHE):
+
+for r in range(RIGHE):
     lista = []
-    for i in range(COLONNE):
-        r = randint(1, 100)
-        if r < minimo:
-            minimo = r
-            minindex = (j, i)
-        if r > massimo:
-            massimo = r
-            maxindex = (j, i)
-        lista.append(r)
+    for c in range(COLONNE):
+        x = randint(1, 100)
+        if x < minimo:
+            minimo = x
+            minindex = (r, c)
+        if x > massimo:
+            massimo = x
+            maxindex = (r, c)
+        lista.append(x)
     listaDiListe.append(lista)
 
-for j in range(len(listaDiListe)):
-    for i in range(len(listaDiListe[j])):
-        print(listaDiListe[j][i], end=" ")
-    print(f"-> somma lista[{j}]: {sum(listaDiListe[j])}")
+for r in range(len(listaDiListe)):
+    for c in range(len(listaDiListe[r])):
+        print(listaDiListe[r][c], end=" ")
+    print(f"-> somma lista[{r}]: {sum(listaDiListe[r])}")
 
 print()
 
@@ -33,8 +34,8 @@ print(f"Somma di tutte le liste: {somma}")
 
 print()
 
-max_col, max_row = maxindex
-min_col, min_row = minindex
+min_row, min_col = minindex
+max_row, max_col = maxindex
 
 print(
     f"Il numero più piccolo della matrice è: {minimo} nella colonna {min_col} e nella riga {min_row}"
