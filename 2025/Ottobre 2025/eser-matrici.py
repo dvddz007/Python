@@ -1,4 +1,3 @@
-'''
 from random import randint
 
 RIGHE = int(input("Inserire la lunghezza di righe della matrice: "))
@@ -87,7 +86,6 @@ if nrow is None or ncol is None:
     print(f"Il numero {n} non è presente nella matrice")
 else:
     print(f"Il numero {n} si trova nella riga {nrow} e colonna {ncol}")
-'''
 
 '''
 Creare e stampare una matrice
@@ -100,8 +98,6 @@ Somma degli elementi
 Somma per righe e per colonne
 Stampa la somma degli elementi per ogni riga e per ogni colonna.
 '''
-
-from random import randint
 
 
 def creaMatrice(size: int) -> list[list[int]]:
@@ -184,7 +180,48 @@ Trasposta di una matrice
     Scrivi trasposta(m) che restituisce la trasposta (cioè righe e colonne scambiate).
 '''
 
-pass
+
+def isDiagonale(matrice: list[list[int]]) -> bool:
+    for r in range(len(matrice)):
+        for c in range(len(matrice)):
+            if r == c:
+                continue
+            else:
+                if matrice[r][c] != 0:
+                    return False
+    return True
+
+
+def creaIdentita(size: int) -> list[list[int]]:
+    matrice = []
+    for r in range(size):
+        lista = []
+        for c in range(size):
+            if r == c:
+                lista.append(1)
+            else:
+                lista.append(0)
+        matrice.append(lista)
+    return matrice
+
+
+def isTriangolareSuperiore(matrice: list[list[int]]) -> bool:
+    for r in range(1, len(matrice)):  # ignoro la prima riga perchè non è compresa nel triangolo
+        for c in range(len(matrice)):
+            if r > c and matrice[r][c] != 0:  # r è maggiore di c dalla seconda riga fino a prima della metà matrice
+                return False
+    return True
+
+
+def trasposta(matrice: list[list[int]]) -> list[list[int]]:
+    RIGHE = len(matrice)
+    COLONNE = len(matrice[0])
+    matrice_trasposta = [[0] * RIGHE for _ in range(COLONNE)]
+    for r in range(RIGHE):
+        for c in range(COLONNE):
+            matrice_trasposta[c][r] = matrice[r][c]
+    return matrice_trasposta
+
 
 '''
 Prodotto di due matrici
@@ -197,7 +234,54 @@ Creazione di una matrice perimetrale (ripasso)
     Ricrea la tua funzione creaPerimetrale(size) ma senza usare funzioni già scritte: fallo da zero.
 '''
 
-pass
+
+def prodottoMatrici(m1: list[list[int]], m2: list[list[int]]) -> list[list[int]]:
+    size = len(m1) if len(m1) == len(m2) else 0
+    values = []
+    for r in range(size):
+        riga = []
+        for c in range(size):
+            somma = 0
+            for k in range(size):
+                somma += m1[r][k] * m2[k][c]
+            riga.append(somma)
+        values.append(riga)
+    return values
+
+
+def ruota90(matrice: list[list[int]]) -> list[list[int]]:
+    size = len(matrice)
+    ruotata = []
+    for c in range(size):
+        nuova_riga = []
+        for r in range(size - 1, -1, -1):
+            nuova_riga.append(matrice[r][c])
+        ruotata.append(nuova_riga)
+    return ruotata
+
+
+def isTrasposta(matrice: list[list[int]]) -> bool:
+    matrice_trasposta = trasposta(matrice)
+    for r in range(len(matrice)):
+        for c in range(len(matrice[0])):
+            if matrice[r][c] != matrice_trasposta[r][c]:
+                return False
+    return True
+
+
+def creaPerimetrale(size: int) -> list[list[int]]:
+    matrice = []
+    bordo = randint(1, 99)
+    for r in range(size):
+        lista = []
+        for c in range(size):
+            if (r in [0, size - 1]) or (c in [0, size - 1]):
+                lista.append(bordo)
+            else:
+                lista.append(randint(1, 99))
+        matrice.append(lista)
+    return matrice
+
 
 '''
 Verifica "bordo costante"
@@ -209,4 +293,40 @@ Conta numeri pari e dispari
     Conta quanti numeri pari e dispari ci sono nella matrice e stampa le percentuali.
 '''
 
-pass
+
+def bordoCostante(matrice: list[list[int]]) -> bool:
+    bordo = matrice[0][0]
+    for r in range(len(matrice)):
+        for c in range(len(matrice[0])):
+            if (r in [0, len(matrice) - 1]) or (c in [0, len(matrice) - 1]):
+                if matrice[r][c] != bordo:
+                    return False
+    return True
+
+
+def specchia(matrice: list[list[int]]) -> list[list[int]]:
+    specchiata = []
+    for riga in matrice:
+        nuova = []
+        for i in range(len(riga) - 1, -1, -1):  # partendo dall'ultimo elemento fino al primo
+            nuova.append(riga[i])
+        specchiata.append(nuova)
+    return specchiata
+
+
+def conteggio(matrice: list[list[int]]) -> tuple[int, int]:
+    pari = 0
+    dispari = 0
+    for r in range(len(matrice)):
+        for c in range(len(matrice[0])):
+            if matrice[r][c] % 2 == 0:
+                pari += 1
+            else:
+                dispari += 1
+    return pari, dispari
+
+
+def percentualiPariDispari(matrice: list[list[int]]) -> tuple[float, float]:
+    pari, dispari = conteggio(matrice)
+    totale = len(matrice) * len(matrice[0])
+    return pari / totale * 100, dispari / totale * 100
