@@ -48,18 +48,20 @@ def stampaTabellare(matrice: list[list[int]]) -> None:
         for c in range(len(matrice[r])):
             val = matrice[r][c]
             if val < 10:
-                print('   ' + str(matrice[r][c]), end='')
+                print('   ' + str(val), end='')
             elif 10 <= val < 100:
-                print('  ' + str(matrice[r][c]), end='')
+                print('  ' + str(val), end='')
             else:
-                print(' ' + str(matrice[r][c]), end='')
+                print(' ' + str(val), end='')
         print()
 
 
 matrice = creaMatrice(9, 5, 100)
+print('Matrice casuale:')
 stampaTabellare(matrice)
 
 print()
 
 matriceTrasposta = trasponi(matrice)
+print('Matrice trasposta:')
 stampaTabellare(matriceTrasposta)
